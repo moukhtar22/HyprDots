@@ -81,8 +81,10 @@ git clone https://github.com/vinceliuice/Fluent-icon-theme.git ~/Fluent-icon-the
 # Clone and apply HyprDots configuration
 git clone https://github.com/moukhtar22/HyprDots.git ~/HyprDots || true
 cd ~/HyprDots
-chmod +x install.sh || true
-./install.sh || true
+cp -r .local/* $HOME/.local || true
+cp -r .config/* $HOME/.config || true 
+mkdir $HOME/Pictures || true 
+cp -r .walls/* $HOME/Pictures || true
 
 # Configure pipewire
 systemctl --user enable --now pipewire pipewire-pulse wireplumber || true
