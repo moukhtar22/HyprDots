@@ -49,6 +49,7 @@ sudo pacman -S --noconfirm \
   pipewire pipewire-pulse pipewire-alsa \
   wireplumber \
   nmcli \
+  git \
   networkmanager \
   libreoffice-fresh \
   udiskie || true
