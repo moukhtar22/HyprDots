@@ -2,14 +2,6 @@
 
 set -e
 
-# Clone and apply HyprDots configuration
-git clone https://github.com/moukhtar22/HyprDots.git ~/HyprDots || true
-cd ~/HyprDots
-cp -r .local/* $HOME/.local || true
-cp -r .config/* $HOME/.config || true
-mkdir $HOME/Pictures || true
-cp -r .walls/* $HOME/Pictures || true
-
 # Update the system
 sudo pacman -Syu --noconfirm || true
 
