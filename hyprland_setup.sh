@@ -16,8 +16,8 @@ fi
 
 # Install all packages via yay
 yay -S --noconfirm \
-  Hyprland \ #https://archlinux.org/packages/extra/x86_64/hyprland/
-  waybar \ #https://github.com/Alexays/Waybar/
+  Hyprland \ 
+  waybar \ 
   kitty \
   rofi-lbonn-wayland \
   dunst \
