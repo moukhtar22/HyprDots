@@ -19,33 +19,49 @@ yay -S --noconfirm \
   hyprland \
   waybar \
   kitty \
-  rofi-lbonn-wayland \
+  rofi-wayland \
   dunst \
   hyprlock \
   hypridle \
-  nerd-fonts-cascadia-code \
-  nerd-fonts-jetbrains-mono \
-  nerd-fonts-ubuntu \
+  ttf-nerd-fonts-symbols \
+  ttf-nerd-fonts-symbols-common \
+  ttf-nerd-fonts-symbols-mono \
+  ttf-noto-nerd \
+  ttf-ubuntu-mono-nerd \
   ttf-font-awesome \
-  noto-fonts \
-  noto-fonts-cjk \
-  noto-fonts-emoji \
+  ttf-cascadia-code-nerd \
+  ttf-cascadia-mono-nerd \
+  ttf-jetbrains-mono-nerd \
+  ttf-ibmplex-mono-nerd \
+  ttf-liberation-mono-nerd \
+  ttf-iawriter-nerd \
+  ttf-iosevka-nerd \
   neovim \
   zsh \
+  zsh-autosuggestions \
+  zsh-completions \
+  zsh-syntax-highlighting \
+  firefox \
+  firefox-adblock-plus \
+  firefox-dark-reader \
   zenity \
+  yad \
+  sddm \
   cliphist \
   dolphin \
+  dolphin-plugins \
   swww \
   mpv \
   vlc \
   okular \
   zathura \
   zathura-pdf-mupdf \
-  musikcube \
+  elisa \
+  rhythmbox \
   aria2 \
   qbittorrent \
   fasd \
-  grimblast \
+  grim\
   wl-clipboard \
   xdg-desktop-portal-hyprland \
   polkit-kde-agent \
@@ -54,6 +70,7 @@ yay -S --noconfirm \
   pipewire-pulse \
   pipewire-alsa \
   wireplumber \
+  ibwireplumber \
   nmcli \
   networkmanager \
   libreoffice-fresh \
@@ -61,9 +78,9 @@ yay -S --noconfirm \
   mojave-gtk-theme \
   fluent-icon-theme \
   eza \
-  vesktop \
   rofi-emoji-git \
-  zero-v3 \
+  zeroc-ice \
+  zeromq \
   fastfetch 
 
 
@@ -78,6 +95,16 @@ git clone https://github.com/vinceliuice/Mojave-gtk-theme.git ~/Mojave-gtk-theme
 
 git clone https://github.com/vinceliuice/Fluent-icon-theme.git ~/Fluent-icon-theme || true
 ~/Fluent-icon-theme/install.sh || true
+
+
+# Install Vesktop from GitHub
+git clone https://github.com/Vencord/Vesktop.git ~/Vesktop || true
+cd ~/Vesktop || true
+npm install || true  # Assuming Vesktop uses Node.js/npm
+npm run build || true
+sudo npm install -g vesktop || true
+cd ~ || true
+
 
 # Clone and apply HyprDots configuration
 git clone https://github.com/moukhtar22/HyprDots.git ~/HyprDots || true
