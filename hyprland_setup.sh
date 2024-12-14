@@ -83,6 +83,7 @@ cp -r .local/* $HOME/.local || true
 cp -r .config/* $HOME/.config || true
 mkdir $HOME/Pictures || true
 cp -r .walls/* $HOME/Pictures || true
+
 # Configure pipewire
 systemctl --user enable --now pipewire pipewire-pulse wireplumber || true
 
