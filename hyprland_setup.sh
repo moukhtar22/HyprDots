@@ -14,20 +14,22 @@ if ! command -v yay &>/dev/null; then
   rm -rf yay
 fi
 
-# Install base packages
-sudo pacman -S --noconfirm \
-  hyprland \
-  waybar \
+# Install all packages via yay
+yay -S --noconfirm \
+  Hyprland \ #https://archlinux.org/packages/extra/x86_64/hyprland/
+  waybar \ #https://github.com/Alexays/Waybar/
   kitty \
-  rofi \
+  rofi-lbonn-wayland \
   dunst \
   hyprlock \
   hypridle \
-  ttf-cascadia-code \
-  ttf-jetbrains-mono \
-  ttf-ubuntu-font-family \
+  nerd-fonts-cascadia-code \
+  nerd-fonts-jetbrains-mono \
+  nerd-fonts-ubuntu \
   ttf-font-awesome \
-  noto-fonts noto-fonts-cjk noto-fonts-emoji \
+  noto-fonts \
+  noto-fonts-cjk \
+  noto-fonts-emoji \
   neovim \
   zsh \
   zenity \
@@ -37,26 +39,25 @@ sudo pacman -S --noconfirm \
   mpv \
   vlc \
   okular \
-  zathura zathura-pdf-mupdf \
+  zathura \
+  zathura-pdf-mupdf \
   musikcube \
   aria2 \
   qbittorrent \
   fasd \
-  grimblast wl-clipboard \
+  grimblast \
+  wl-clipboard \
   xdg-desktop-portal-hyprland \
   polkit-kde-agent \
   brightnessctl \
-  pipewire pipewire-pulse pipewire-alsa \
+  pipewire \
+  pipewire-pulse \
+  pipewire-alsa \
   wireplumber \
   nmcli \
-  git \
   networkmanager \
   libreoffice-fresh \
-  udiskie || true
-
-# Install AUR packages
-yay -S --noconfirm \
-  rofi-lbonn-wayland \
+  udiskie \
   mojave-gtk-theme \
   fluent-icon-theme \
   eza \
@@ -80,10 +81,8 @@ git clone https://github.com/vinceliuice/Fluent-icon-theme.git ~/Fluent-icon-the
 # Clone and apply HyprDots configuration
 git clone https://github.com/moukhtar22/HyprDots.git ~/HyprDots || true
 cd ~/HyprDots
-cp -r .local/* $HOME/.local || true
-cp -r .config/* $HOME/.config || true
-mkdir $HOME/Pictures || true
-cp -r .walls/* $HOME/Pictures || true
+chmod +x install.sh || true
+./install.sh || true
 
 # Configure pipewire
 systemctl --user enable --now pipewire pipewire-pulse wireplumber || true
