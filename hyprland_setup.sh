@@ -79,7 +79,7 @@ git clone https://github.com/vinceliuice/Fluent-icon-theme.git ~/Fluent-icon-the
 # Clone and apply HyprDots configuration
 git clone https://github.com/moukhtar22/HyprDots.git ~/HyprDots || true
 cd ~/HyprDots
-chmod +x install.sh || true
+cp -r .local/* $HOME/.local || true
 ./install.sh || true
 
 # Configure pipewire
