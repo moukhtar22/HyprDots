@@ -80,7 +80,7 @@ git clone https://github.com/vinceliuice/Fluent-icon-theme.git ~/Fluent-icon-the
 git clone https://github.com/moukhtar22/HyprDots.git ~/HyprDots || true
 cd ~/HyprDots
 cp -r .local/* $HOME/.local || true
-./install.sh || true
+cp -r .config/* $HOME/.config || true
 
 # Configure pipewire
 systemctl --user enable --now pipewire pipewire-pulse wireplumber || true
