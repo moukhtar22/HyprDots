@@ -16,8 +16,8 @@ fi
 
 # Install all packages via yay
 yay -S --noconfirm \
-  Hyprland \ 
-  waybar \ 
+  hyprland \
+  waybar \
   kitty \
   rofi-lbonn-wayland \
   dunst \
@@ -64,7 +64,8 @@ yay -S --noconfirm \
   vesktop \
   rofi-emoji-git \
   zero-v3 \
-  fastfetch || true
+  fastfetch 
+
 
 # Set zsh as default shell
 chsh -s $(which zsh) || true
