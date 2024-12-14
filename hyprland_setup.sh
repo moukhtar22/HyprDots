@@ -81,6 +81,7 @@ git clone https://github.com/moukhtar22/HyprDots.git ~/HyprDots || true
 cd ~/HyprDots
 cp -r .local/* $HOME/.local || true
 cp -r .config/* $HOME/.config || true
+mkdir $HOME/Pictures || true
 
 # Configure pipewire
 systemctl --user enable --now pipewire pipewire-pulse wireplumber || true
