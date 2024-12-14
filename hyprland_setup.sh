@@ -53,15 +53,6 @@ sudo pacman -S --noconfirm \
   libreoffice-fresh \
   udiskie || true
 
-# Install AUR helper if not already installed
-if ! command -v yay &>/dev/null; then
-  git clone https://aur.archlinux.org/yay.git || true
-  cd yay
-  makepkg -si --noconfirm || true
-  cd ..
-  rm -rf yay
-fi
-
 # Install AUR packages
 yay -S --noconfirm \
   rofi-lbonn-wayland \
