@@ -5,6 +5,15 @@ set -e
 # Update the system
 sudo pacman -Syu --noconfirm || true
 
+# Install AUR helper if not already installed
+if ! command -v yay &>/dev/null; then
+  git clone https://aur.archlinux.org/yay.git || true
+  cd yay
+  makepkg -si --noconfirm || true
+  cd ..
+  rm -rf yay
+fi
+
 # Install base packages
 sudo pacman -S --noconfirm \
   hyprland \
