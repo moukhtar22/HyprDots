@@ -91,7 +91,8 @@ yay -S --noconfirm \
   zeromq \
   fastfetch \
   nodejs \
-  npm
+  npm \
+  curl
 
 # Set zsh as default shell for the current user
 echo "Setting zsh as the default shell..."
