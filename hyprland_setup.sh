@@ -1,12 +1,20 @@
 #!/bin/bash
 
-set -e
+set -e  # Exit immediately on error
+
+# Check for root permissions
+if [ "$(id -u)" -ne 0 ]; then
+  echo "This script must be run as root. Use 'sudo ./script_name.sh'."
+  exit 1
+fi
 
 # Update the system
-sudo pacman -Syu --noconfirm || true
+echo "Updating system packages..."
+pacman -Syu --noconfirm || true
 
-# Install AUR helper if not already installed
+# Install AUR helper (yay) if not already installed
 if ! command -v yay &>/dev/null; then
+  echo "Installing yay (AUR helper)..."
   git clone https://aur.archlinux.org/yay.git || true
   cd yay
   makepkg -si --noconfirm || true
@@ -14,7 +22,8 @@ if ! command -v yay &>/dev/null; then
   rm -rf yay
 fi
 
-# Install all packages via yay
+# Install all required packages via yay
+echo "Installing required packages..."
 yay -S --noconfirm \
   hyprland \
   waybar \
@@ -84,14 +93,15 @@ yay -S --noconfirm \
   nodejs \
   npm
 
-# Set zsh as default shell
+# Set zsh as default shell for the current user
+echo "Setting zsh as the default shell..."
 if [ "$SHELL" != "$(which zsh)" ]; then
-  echo "Changing default shell to zsh..."
-  chsh -s "$(which zsh)"
+  chsh -s "$(which zsh)" "$USER"
 fi
 
 # Apply themes and icons
-mkdir -p ~/.themes ~/.icons || true
+echo "Applying Mojave GTK and Fluent Icon themes..."
+mkdir -p ~/.themes ~/.icons
 
 # Install Mojave GTK theme from GitHub
 if [ ! -d ~/Mojave-gtk-theme ]; then
@@ -106,6 +116,7 @@ fi
 ~/Fluent-icon-theme/install.sh || true
 
 # Install Vesktop from GitHub
+echo "Installing Vesktop..."
 if [ ! -d ~/Vesktop ]; then
   git clone https://github.com/Vencord/Vesktop.git ~/Vesktop || true
 fi
@@ -119,20 +130,22 @@ npm run build || {
   exit 1
 }
 sudo npm install -g vesktop || true
-cd ~ || true
+cd ~
 
 # Clone and apply HyprDots configuration
+echo "Applying HyprDots configuration..."
 if [ ! -d ~/HyprDots ]; then
   git clone https://github.com/moukhtar22/HyprDots.git ~/HyprDots || true
 fi
 cd ~/HyprDots || true
-cp -r .local/* $HOME/.local || true
-cp -r .config/* $HOME/.config || true
-mkdir -p $HOME/Pictures || true
-cp -r .walls/* $HOME/Pictures || true
+cp -r .local/* ~/.local || true
+cp -r .config/* ~/.config || true
+mkdir -p ~/Pictures
+cp -r .walls/* ~/Pictures || true
 cd ~
 
 # Configure pipewire
+echo "Configuring PipeWire..."
 if command -v pipewire &>/dev/null; then
   systemctl --user enable --now pipewire pipewire-pulse wireplumber || true
 else
@@ -140,7 +153,8 @@ else
 fi
 
 # Enable Hyprland to start automatically
-mkdir -p ~/.config/systemd/user || true
+echo "Configuring Hyprland to start automatically..."
+mkdir -p ~/.config/systemd/user
 cat <<EOL | tee ~/.config/systemd/user/hyprland.service
 [Unit]
 Description=Hyprland Wayland Compositor
@@ -157,17 +171,18 @@ EOL
 systemctl --user enable hyprland.service || true
 
 # Enable Bluetooth on startup
+echo "Enabling Bluetooth service..."
 if systemctl list-unit-files | grep -q bluetooth.service; then
   sudo systemctl enable --now bluetooth.service || true
 else
   echo "Warning: Bluetooth service not found."
 fi
 
-# Final message with reboot prompt
-echo "Installation complete. Do you want to reboot now? (y/N)"
-read -r response
+# Final reboot prompt
+echo -e "\nInstallation complete. It's recommended to reboot now to apply all changes."
+read -rp "Reboot now? (y/N): " response
 if [[ "$response" =~ ^[Yy]$ ]]; then
   sudo reboot
 else
-  echo "You can reboot manually later to apply all changes."
+  echo "You can reboot later to complete the setup."
 fi
