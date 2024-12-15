@@ -61,7 +61,7 @@ yay -S --noconfirm \
   aria2 \
   qbittorrent \
   fasd \
-  grim\
+  grim \
   wl-clipboard \
   xdg-desktop-portal-hyprland \
   polkit-kde-agent \
@@ -70,7 +70,6 @@ yay -S --noconfirm \
   pipewire-pulse \
   pipewire-alsa \
   wireplumber \
-  ibwireplumber \
   nmcli \
   networkmanager \
   libreoffice-fresh \
@@ -81,45 +80,68 @@ yay -S --noconfirm \
   rofi-emoji-git \
   zeroc-ice \
   zeromq \
-  fastfetch 
-
+  fastfetch \
+  nodejs \
+  npm
 
 # Set zsh as default shell
-chsh -s $(which zsh) || true
+if [ "$SHELL" != "$(which zsh)" ]; then
+  echo "Changing default shell to zsh..."
+  chsh -s "$(which zsh)"
+fi
 
 # Apply themes and icons
 mkdir -p ~/.themes ~/.icons || true
 
-git clone https://github.com/vinceliuice/Mojave-gtk-theme.git ~/Mojave-gtk-theme || true
+# Install Mojave GTK theme from GitHub
+if [ ! -d ~/Mojave-gtk-theme ]; then
+  git clone https://github.com/vinceliuice/Mojave-gtk-theme.git ~/Mojave-gtk-theme || true
+fi
 ~/Mojave-gtk-theme/install.sh || true
 
-git clone https://github.com/vinceliuice/Fluent-icon-theme.git ~/Fluent-icon-theme || true
+# Install Fluent Icon Theme from GitHub
+if [ ! -d ~/Fluent-icon-theme ]; then
+  git clone https://github.com/vinceliuice/Fluent-icon-theme.git ~/Fluent-icon-theme || true
+fi
 ~/Fluent-icon-theme/install.sh || true
 
-
 # Install Vesktop from GitHub
-git clone https://github.com/Vencord/Vesktop.git ~/Vesktop || true
+if [ ! -d ~/Vesktop ]; then
+  git clone https://github.com/Vencord/Vesktop.git ~/Vesktop || true
+fi
 cd ~/Vesktop || true
-npm install || true  # Assuming Vesktop uses Node.js/npm
-npm run build || true
+npm install || {
+  echo "Error: npm install failed for Vesktop."
+  exit 1
+}
+npm run build || {
+  echo "Error: npm run build failed for Vesktop."
+  exit 1
+}
 sudo npm install -g vesktop || true
 cd ~ || true
 
-
 # Clone and apply HyprDots configuration
-git clone https://github.com/moukhtar22/HyprDots.git ~/HyprDots || true
-cd ~/HyprDots
+if [ ! -d ~/HyprDots ]; then
+  git clone https://github.com/moukhtar22/HyprDots.git ~/HyprDots || true
+fi
+cd ~/HyprDots || true
 cp -r .local/* $HOME/.local || true
-cp -r .config/* $HOME/.config || true 
-mkdir $HOME/Pictures || true 
+cp -r .config/* $HOME/.config || true
+mkdir -p $HOME/Pictures || true
 cp -r .walls/* $HOME/Pictures || true
+cd ~
 
 # Configure pipewire
-systemctl --user enable --now pipewire pipewire-pulse wireplumber || true
+if command -v pipewire &>/dev/null; then
+  systemctl --user enable --now pipewire pipewire-pulse wireplumber || true
+else
+  echo "Warning: Pipewire is not installed or configured correctly."
+fi
 
 # Enable Hyprland to start automatically
-mkdir -p ~/.config/systemd/user
-cat <<EOL > ~/.config/systemd/user/hyprland.service
+mkdir -p ~/.config/systemd/user || true
+cat <<EOL | tee ~/.config/systemd/user/hyprland.service
 [Unit]
 Description=Hyprland Wayland Compositor
 After=graphical.target
@@ -135,7 +157,17 @@ EOL
 systemctl --user enable hyprland.service || true
 
 # Enable Bluetooth on startup
-sudo systemctl enable --now bluetooth.service || true
+if systemctl list-unit-files | grep -q bluetooth.service; then
+  sudo systemctl enable --now bluetooth.service || true
+else
+  echo "Warning: Bluetooth service not found."
+fi
 
-# Final message
-echo "Installation complete. Please reboot your system to apply all changes."
+# Final message with reboot prompt
+echo "Installation complete. Do you want to reboot now? (y/N)"
+read -r response
+if [[ "$response" =~ ^[Yy]$ ]]; then
+  sudo reboot
+else
+  echo "You can reboot manually later to apply all changes."
+fi
