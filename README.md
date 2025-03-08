@@ -12,10 +12,14 @@
 > [!NOTE]
 > _Please read the instructions in the sections below carefully._  
 > _Also, be aware that the author has an incurable obsession with `black and blue`._
+
+
+<h4> <a href="https://github.com/Pahasara/HyprDots/wiki">See wiki for more details</a>. </h4>
 <br>
 
 ## Screenshots
-![fetch](https://github.com/user-attachments/assets/ccab2535-04f1-44ce-826d-1ea664a6fc57)
+![fetch](https://github.com/user-attachments/assets/cb00d708-48db-4ad3-b2c2-0252422c225a)
+
 
 | ![Neovim](https://github.com/user-attachments/assets/7c7e2449-a5ce-4685-9a7b-12aafbeb8b76) | ![Zen](https://github.com/user-attachments/assets/296e750d-7424-41b9-8bdf-e2536eb49a18) |
 |--|--|
@@ -25,98 +29,6 @@
 
 > [!IMPORTANT]
 > _This setup is designed with a strong emphasis on using keyboard shortcuts for nearly everything, from changing songs to shutting down the computer. Be sure to carefully review the [keybinds.conf](https://github.com/Pahasara/HyprDots/blob/main/.config/hypr/keybinds.conf) file._
-<br>
-
-# 📦 Packages/Programs
-
-### 🛠️ _Basic_
-
-| **Category**               | **Package**                                                                                                                                                                     |
-| -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Compositor**              | [Hyprland](https://hyprland.org)                                                                                                                                                |
-| **Status Bar**              | [Waybar](https://github.com/Alexays/Waybar)                                                                                                                                     |
-| **Terminal**                | [Kitty](https://github.com/kovidgoyal/kitty)                                                                                                                                    |
-| **Launcher & Menus** | [rofi (wayland-fork)](https://archlinux.org/packages/extra/x86_64/rofi-wayland/)                                                                                                 |
-| **Notifications**           | [dunst](https://github.com/dunst-project/dunst)                                                                                                                                 |
-| **Screen Locker**           | [hyprlock](https://github.com/hyprwm/hyprlock)                                                                                                                                  |
-| **Idle Daemon**             | [hypridle](https://github.com/hyprwm/hypridle)                                                                                                                                  |
-| **Fonts**                   | [Caskaydia Mono Nerd Fonts](https://archlinux.org/packages/extra/any/ttf-cascadia-mono-nerd), [JetBrains Mono Nerd Fonts](https://archlinux.org/packages/extra/any/ttf-jetbrains-mono-nerd), [Ubuntu Nerd Fonts](https://archlinux.org/packages/extra/any/ttf-ubuntu-nerd), [Neuropolitical Font](https://www.dafont.com/neuropolitical.font), [Awesome Fonts](https://archlinux.org/packages/extra/any/ttf-font-awesome/) |
-<br>
-
-### 🔧 _Necessary_
-
-| **Category**                | **Package**                                                                                                                                                                     |
-| --------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Shell**                   | [zsh](https://www.zsh.org/)                                                                                                                                                     |
-| **Editor**                  | [neovim](https://github.com/neovim/neovim)                                                                                                                                      |
-| **Browser**                  | [Zen](https://github.com/zen-browser/desktop)                                                                                                                          |
-| **Clipboard Manager**        | [cliphist](https://github.com/sentriz/cliphist)                                                                                                                                 |
-| **File Manager**             | [yazi](https://github.com/sxyazi/yazi), [dolphin](https://github.com/KDE/dolphin) (GUI)                                                                                         |
-| **Wallpaper Daemon**         | [swww](https://github.com/LGFae/swww)                                                                                                                                           |
-| **Media Player**             | [mpv](https://github.com/mpv-player/mpv)                                                                                                                                        |
-| **PDF Reader**               | [zathura](https://github.com/pwmt/zathura), [okular](https://github.com/KDE/okular) (GUI)                                                                                                                                     |
-| **Music Player**       | [musikcube](https://github.com/clangen/musikcube)                                                                                                                               |
-<br>
-
-### 🌟 _Useful Tools_
-
-| **Category**                | **Package**                                                                                                                                                                     |
-| --------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Download Manager**   | [aria2](https://github.com/aria2/aria2)                                                                                                                                         |
-| **Calculator**               | [rofi-calc](https://github.com/svenstaro/rofi-calc)                                                                                                                             |
-| **Torrent Client**     | [qBittorrent](https://github.com/qbittorrent/qBittorrent) (GUI)                                                                                                                       |
-| **TV Show Manager**    | [ZeroV3](https://github.com/Pahasara/ZeroV3)                                                                                                                                    |
-| **System Info**              | [fastfetch](https://github.com/fastfetch-cli/fastfetch)                                                                                                                              |
-<br>
-
-### ⚙️ _Other Components_
-
-- _`WhiteSur-Dark`_ - QT/GTK Theme
-- _`BugSur`_ - QT Icon Theme
-- _`Vortex-Dark-Icons`_ - GTK/Icon Theme
-- _`eza`_ - Alternative to _`ls`_ command
-- _`xdg-desktop-portal-hyprland`_ - For Better Functionality and Compatibility
-- _`polkit-kde-agent`_ - Authentication Agent
-- _`brightnessctl`_ - Monitor and Keyboard Brightness Control
-- _`pipewire`_ - Audio Playback (pipewire, pipewire-pulse, pipewire-alsa)
-- _`wireplumber`_ - Session Manager for Pipewire
-- _`nmcli`_ - Connection Manager
-- _`vesktop`_ - Discord Client
-- _`libreOffice-fresh`_ - Alternative to MSOffice package
-- _`grimblast-git`_ _`wl-clipboard`_ - Screenshot Utility
-- _`rofi-emoji-git`_ - Emoji selector
-- _`udiskie`_ - USB Device Manager
-- _[`ianny`](https://github.com/zefr0x/ianny)_ - Save me from myself
-<br>
-
-# 📥 Install Instructions
-
-> [!CAUTION]
-> **Backup ur current configs before proceeding further. I WILL NOT BE HELD RESPONSIBLE IF U LOSE UR OLD CONFIGS.**
-
-```
-git clone https://github.com/Pahasara/HyprDots.git
-```
-
-```
-cd HyprDots
-```
-
-```
-cp -r .local/* $HOME/.local
-```
-
-```
-cp -r .config/* $HOME/.config
-```
-
-```
-mkdir $HOME/Pictures
-```
-
-```
-cp -r .wall/* $HOME/Pictures
-```
 <br>
 
 
