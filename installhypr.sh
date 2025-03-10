@@ -50,7 +50,7 @@ fi
 # Install dependencies (including AUR packages)
 print_message "Installing dependencies..."
 DEPENDENCIES=(
-    kitty uwsm zsh curl wget powerline-fonts foobar fastfetch
+    kitty uwsm zsh curl wget powerline-fonts fastfetch
 )
 
 AUR_DEPENDENCIES=(
