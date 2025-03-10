@@ -54,9 +54,9 @@ DEPENDENCIES=(
 )
 
 AUR_DEPENDENCIES=(
-    hyprland-meta-git swaylock-effects waybar-cava rofi-wayland rofi-themes-collection-git waybar dunst-git hyprlock-git 
-    hypridle-git ttf-cascadia-mono-nerd ttf-jetbrains-mono-nerd ttf-ubuntu-nerd ttf-font-awesome neuropolitical-ttf neuropolitical-otf
-    neovim zen-browser-bin cliphist yazi dolphin dolphin-plugins swww mpv zathura okular musikcube aria2-git rofi-calc qbittorrent-git rofi-emoji-git
+    hyprland-meta-git swaylock-effects rofi-wayland rofi-themes-collection-git waybar dunst-git hyprlock-git 
+    hypridle-git ttf-cascadia-mono-nerd ttf-jetbrains-mono-nerd ttf-ubuntu-nerd ttf-font-awesome 
+    neovim zen-browser-bin cliphist yazi dolphin dolphin-plugins swww mpv zathura okular musikcube rofi-calc qbittorrent-git rofi-emoji-git
 )
 
 # Install official packages
