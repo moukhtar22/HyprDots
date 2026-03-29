@@ -1,67 +1,108 @@
 /* github.com/pahasara/HyprDots */
 
-@import url("themes/azure.css");
+@import url("themes/fluent.css");
 
 * {
-  font-family: "Neuropolitical";
-  font-size: 14px;
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 14.75px;
   font-weight: bold;
 }
 
 window#waybar {
-  color: @fg-module;
-  background: @background;
-  border: 2px solid @border;
-  border-radius: 15px;
+  background: @transparent;
 }
 
 #workspaces {
-  min-width: 185px;
+  min-width: 190px;
 }
 
 #workspaces button {
   padding: 0px;
-  margin: 8px 12px 8px 0px;
-  min-height: 0px;
-  min-width: 20px;
-  border-radius: 15px;
-  border: 0px;
-  transition: all 0.3s ease-in-out;
+  margin: 5px 2px;
+  min-width: 24px;
+  transition: all 0.12s cubic-bezier(0.55, -0.68, 0.48, 1.68);
   opacity: 0.9;
   color: @fg-persist;
-  background-color: @fg-persist;
+  background-color: transparent;
 }
 
-#workspaces button:hover {
-  color: @foreground;
-  background: @foreground;
-  border-radius: 15px;
-  opacity: 0.7;
+#workspaces button label {
+  font-size: 20px;
 }
 
 #workspaces button.active {
   color: @fg-blink;
-  background: @fg-blink;
-  min-width: 35px;
-  transition: all 0.3s ease-in-out;
-  opacity: 0.7;
+  opacity: 0.9;
 }
 
 #workspaces button.occupied {
   color: @foreground;
-  background-color: @fg-persist;
 }
 
 #workspaces button.empty {
   color: @fg-persist;
-  background-color: @fg-persist;
-  opacity: 0.3;
+  opacity: 0.5;
 }
 
 #workspaces button.urgent {
   color: @warning;
-  background-color: @warning;
-  animation: workspace_urgent 1s ease-in-out infinite;
+  opacity: 1;
+  transition: all 0.15s cubic-bezier(0.55, -0.68, 0.48, 1.68);
+  animation-name: blink-ws;
+  animation-duration: 1.2s;
+  animation-iteration-count: 2;
+}
+
+@keyframes blink-ws {
+  to {
+    color: transparent;
+  }
+}
+
+#center {
+  background-color: @background;
+  border: 0px solid @border-module;
+  color: @fg-module;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.9);
+}
+
+#clock,
+#custom-date-jp,
+#custom-time-jp,
+#pulseaudio,
+#battery {
+  padding: 0px 10px 5px 10px;
+}
+
+#workspaces {
+  text-shadow: none;
+}
+
+#idle_inhibitor,
+#workspaces {
+  border-radius: 14px 4px 15px 6px;
+}
+
+#right,
+#left {
+  background-color: @background;
+  color: @fg-module;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.9);
+}
+
+#center {
+  padding-left: 40px;
+  padding-right: 40px;
+  border-radius: 0px 0px 45px 45px;
+}
+
+#left {
+  padding-right: 20px;
+  border-radius: 0px 2px 45px 0px;
+}
+#right {
+  padding-left: 20px;
+  border-radius: 2px 0px 0px 45px;
 }
 
 #battery icon {
@@ -75,7 +116,7 @@ window#waybar {
 #battery.charging {
   color: @foreground;
   animation-name: blink;
-  animation-duration: 1s;
+  animation-duration: 1.2s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   animation-direction: alternate;
@@ -105,41 +146,28 @@ window#waybar {
   animation-direction: alternate;
 }
 
-#tray {
-  background-color: @bg-tray;
-}
-
-#custom-storage,
-#window,
-#clock.date,
-#memory,
-#cpu {
-  color: @fg-alt;
-}
-
-#clock.time {
-  font-size: 16px;
-  font-weight: 900;
-}
-
-#wireplumber,
-#idle_inhibitor,
-#battery,
-#clock,
-#tray,
-#pulseaudio,
 #network {
-  font-size: 15px;
-  font-family: "JetBrainsMono Nerd Font";
-  text-shadow: 0 0 2px rgba(0, 0, 0, 0.9);
+  font-size: 16.75px;
+  padding: 0px 13px 5px 13px;
+}
+
+#network.disconnected {
 }
 
 #idle_inhibitor {
-  font-size: 22px;
-  font-weight: 100;
-  border-radius: 25px;
-  padding-left: 7px;
-  padding-right: 9px;
+  font-size: 16px;
+  padding: 0px 10px 0px 8px;
+}
+
+#clock.date,
+#custom-date-jp {
+  color: @fg-alt;
+}
+
+#clock.time,
+#custom-time-jp {
+  font-size: 15px;
+  font-weight: 900;
 }
 
 #idle_inhibitor.activated {
@@ -150,23 +178,26 @@ window#waybar {
   color: @active;
 }
 
-#gamemode.running,
+#pulseaudio {
+}
+
+#pulseaudio.muted {
+}
+
+#custom-seperator {
+  color: @separator;
+}
+
+#tray {
+  padding-bottom: 5px;
+}
+
 #custom-song {
-  font-family: "Neuropolitical";
-  font-size: 14px;
+  font-family: "CaskaydiaMono NerdFont";
   font-style: italic;
-  font-weight: 700;
-  text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
-  color: @foreground;
-}
-
-.modules-left {
-  padding-left: 8px;
-}
-
-.modules-right {
-  border-radius: 13px;
+  font-weight: 900;
+  padding-right: 12px;
   padding-left: 10px;
-  padding-right: 10px;
-  margin: 5px;
+  padding-bottom: 5px;
+  color: @foreground;
 }
