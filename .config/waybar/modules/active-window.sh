@@ -160,7 +160,7 @@ update_output() {
     title="${title//</&lt;}"
     title="${title//>/&gt;}"
     
-    echo "<span size='large'>$(get_icon "$class")</span>  $title"
+    echo "<span size='large'>$(get_icon "$class")</span>  $title "
 }
 # --- MAIN ---
 update_output
