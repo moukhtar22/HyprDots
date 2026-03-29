@@ -58,6 +58,8 @@ export TLDR_COLOR_COMMAND="green"
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export TESTINGPLATFORM_TELEMETRY_OPTOUT=1
 export DOTNET_HTTPREPL_TELEMETRY_OPTOUT=1
+export TURBO_TELEMETRY_DISABLED=1
+export DO_NOT_TRACK=1
 
 # ──────────────────────────────────────────────────────────────
 # DEBUGGING FLAGS

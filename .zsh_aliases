@@ -81,6 +81,7 @@ alias ac="aria2c"
 alias y="yazi"
 alias mg="mega-get"
 alias ff="clear && fastfetch"
+alias hc="hyprctl clients"
 
 # yt-dlp Aliases
 alias yd='yt-dlp -f "bv*[vcodec^=av01][height<=1080]+ba[acodec=opus]/bv*[vcodec^=vp9][height<=1080]+ba[acodec=opus]/bv*[height<=1080]+ba/b" --embed-thumbnail --embed-metadata'
