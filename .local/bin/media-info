@@ -1,6 +1,6 @@
 #!/bin/bash
 
-Gefault_max_length=32
+default_max_length=32
 DISABLE_BROWSER=0
 
 PLAYERS=("spotify" "Lollypop" "firefox")
@@ -58,7 +58,7 @@ for player in "${PLAYERS[@]}"; do
 
     if playerctl --player="$player" status 2>/dev/null | grep -q "Playing"; then
         info="$(playerctl metadata --player="$player" --format '{{title}} ✦ {{artist}}')"
-        output="$(detect_icon "$player")  $(trim_info "$info" "$max_length")"
+        output="$(detect_icon "$player")  $(trim_info "$info" "$max_length") "
         break
     fi
 done
@@ -71,7 +71,7 @@ if [[ -z "$output" ]]; then
 
         if playerctl --player="$player" status 2>/dev/null | grep -q "Playing"; then
             info="$(playerctl metadata --player="$player" --format '{{title}} ✦ {{artist}}')"
-            output="$(detect_icon "$player")  $(trim_info "$info" "$max_length")"
+            output="$(detect_icon "$player")  $(trim_info "$info" "$max_length") "
             break
         fi
     done < <(playerctl --list-players 2>/dev/null)
