@@ -3,39 +3,25 @@
     //#####################
     //### CONFIGURATION ###
     //#####################
-    // "reload_style_on_change": true,
-    "margin-top": 7,
-    "margin-left": 8,
-    "margin-right": 8,
+    "reload_style_on_change": true,
+    "margin-top": 0,
+    "margin-left": 0,
+    "margin-right": 0,
     "margin-bottom": 0,
     "layer": "bottom",
     "position": "top",
-    "spacing": 15,
+    "spacing": 10,
     //##################
     //### BAR ORDER  ###
     //##################
     "modules-left": [
-        "idle_inhibitor",
-        "hyprland/workspaces",
-        // "custom/storage",
-        // "cpu",
-        // "memory",
-        "custom/song"
+        "group/left",
     ],
-    // "modules-center":[
-    // "hyprland/window"
-    // "custom/weather",
-    // ],
+    "modules-center": [
+        "group/center",
+    ],
     "modules-right": [
-        "tray",
-        "gamemode",
-        // "custom/update",
-        "pulseaudio",
-        // "backlight",
-        "network",
-        "battery",
-        "clock#date",
-        "clock#time",
+        "group/right",
     ],
     //################
     //### MODULES  ###
@@ -57,14 +43,50 @@
             "9": [],
             "10": []
         },
-        "format": "<small>{icon}</small>",
         "format-icons": {
-            // "active": "",
-            "default": "",
+            "active": "◉",
+            "default": "",
+            "empty": ""
         }
     },
     "hyprland/window": {
-        "max-length": 30,
+        "max-length": 40,
+        "tooltip": false
+    },
+    "group/left": {
+        "orientation": "inherit",
+        "modules": [
+            "idle_inhibitor",
+            "hyprland/workspaces"
+        ]
+    },
+    "group/right": {
+        "orientation": "inherit",
+        "modules": [
+            "custom/song",
+            "tray",
+            "network",
+            "pulseaudio",
+            "battery"
+        ]
+    },
+    "group/center": {
+        "orientation": "inherit",
+        "modules": [
+            "custom/date-jp",
+            "custom/time-jp"
+        ]
+    },
+    "custom/date-jp": {
+        "exec": "LANG=ja_JP.UTF-8 date '+%a %m月%d日'",
+        "interval": 3600,
+        "format": "{}",
+        "tooltip": false
+    },
+    "custom/time-jp": {
+        "exec": "LANG=ja_JP.UTF-8 date '+%I:%M %p'",
+        "interval": 1,
+        "format": "{}",
         "tooltip": false
     },
     "clock#time": {
@@ -72,7 +94,7 @@
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
     "clock#date": {
-        "format": "{:%a <big>%d</big> %b}",
+        "format": "{:%a %d %b}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
     "battery": {
@@ -82,30 +104,25 @@
             "warning": 25,
             "critical": 15
         },
-        "format": "<big>{icon}</big><small> {capacity}%</small>",
-        "format-charging": "<big>󰂄</big><small> {capacity}%</small>",
-        "format-not-charging": "<big>󱟢</big><small> {capacity}%</small>",
+        "format": "<big>{icon}</big>",
+        "format-charging": "<big>󰂄</big>",
+        "format-not-charging": "<big>󱟢</big>",
         "format-icons": [
-            "󰂃",
-            "󰁺",
-            "󰁻",
-            "󰁼",
-            "󰁽",
-            "󰁾",
-            "󰁿",
-            "󰂀",
-            "󰂁",
-            "󰁹"
+            " ",
+            " ",
+            " ",
+            " ",
+            " "
         ],
         "tooltip-format": "Battery level: {capacity}%\nRemaining time: {time}"
     },
     "network": {
         // "interface": "*",
         "format": " ",
-        "format-wifi": "<big>{icon}</big> ",
+        "format-wifi": "{icon}",
         "format-ethernet": " {ifname}",
         "format-linked": "󰕥 {ifname}",
-        "format-disconnected": "<big></big> ",
+        "format-disconnected": " ",
         "format-icons": [
             "󰤯",
             "󰤟",
@@ -152,7 +169,7 @@
         "on-click": "blueman-manager",
     },
     "pulseaudio": {
-        "format": "{format_source}{icon} ",
+        "format": "{format_source}{icon}",
         "format-bluetooth": "{icon} 󰂰 {volume}%",
         "format-muted": " ",
         "format-source": "<big></big>  ",
@@ -178,28 +195,13 @@
         "smooth-scrolling-threshold": 1,
         "tooltip-format": "{desc} | {volume}%",
     },
-    "wireplumber": {
-        "format": "{icon}",
-        "format-bluetooth": " {icon} {volume}% {format_source}",
-        "format-bluetooth-muted": "  {icon} {format_source}",
-        "format-muted": "  {format_source}",
-        "format-source": " {volume}%",
-        "format-source-muted": " ",
-        "format-icons": {
-            "headphone": " ",
-            "hands-free": " ",
-            "headset": " ",
-            "phone": "",
-            "portable": "",
-            "car": " ",
-            "default": [
-                "",
-                " ",
-                " "
-            ],
-        },
-        "tooltip-format": "Volume: {volume}%",
-        "on-click": "easyeffects"
+    "pulseaudio#microphone": {
+        "format": "{format_source} ",
+        "format-source": "",
+        "format-source-muted": "",
+        "on-scroll-up": "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SOURCE@ 2%+",
+        "on-scroll-down": "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SOURCE@ 2%-",
+        "tooltip-format": "{source_desc} | {source_volume}%",
     },
     "cpu": {
         "interval": 2,
@@ -223,7 +225,7 @@
     },
     "custom/song": {
         "interval": 2,
-        "exec": "~/.local/bin/media-info max_length=20",
+        "exec": "~/.local/bin/media-info max_length=24",
         "on-click": "~/.local/bin/player next_track",
         "on-click-right": "~/.local/bin/player previous_track",
         "on-click-middle": "~/.local/bin/player toggle_play",
@@ -255,7 +257,7 @@
         "exec-if": "ping wttr.in -c1"
     },
     "idle_inhibitor": {
-        "format": "", //{icon}
+        "format": "<big> </big>", //{icon}
         "format-icons": {
             "activated": "",
             "deactivated": ""
@@ -275,20 +277,12 @@
         "on-click": "~/.local/bin/update-status",
         "tooltip-format": "Check Updates"
     },
-    "gamemode": {
-        "format": "{glyph}",
-        "format-alt": "{glyph} {count}",
-        "glyph": "<U+F7B3>",
-        "hide-not-running": true,
-        "use-icon": true,
-        "icon-name": "input-gaming-symbolic",
-        "icon-spacing": 4,
-        "icon-size": 19,
-        "tooltip": true,
-        "tooltip-format": "Games running: {count}"
-    },
     "tray": {
-        "icon-size": 20,
+        "icon-size": 19,
         "spacing": 12
+    },
+    "custom/seperator": {
+        "format": "|",
+        "tooltip": false
     }
 }

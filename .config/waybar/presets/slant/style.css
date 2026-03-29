@@ -1,6 +1,6 @@
 /* github.com/pahasara/HyprDots */
 
-@import url("themes/azure.css");
+@import url("themes/fluent.css");
 
 * {
   font-family: "JetBrainsMono Nerd Font";
@@ -72,15 +72,11 @@ window#waybar {
 #idle_inhibitor,
 #workspaces,
 #custom-song,
+#center,
 #custom-storage,
 #memory,
 #cpu,
-#tray,
-#network,
-#backlight,
-#clock,
-#pulseaudio,
-#battery {
+#backlight {
   padding: 0px 2px 0px 8px;
   background-color: @background;
   border: 2px solid @border-module;
@@ -95,10 +91,6 @@ window#waybar {
   padding: 0px 10px 0px 8px;
 }
 
-#pulseaudio {
-  padding: 0px 14px 0px 8px;
-}
-
 #workspaces {
   text-shadow: none;
 }
@@ -111,26 +103,17 @@ window#waybar {
   border-radius: 14px 4px 15px 6px;
 }
 
-#custom-song {
+#center {
   border-radius: 14px 9px 14px 9px;
 }
 
-#tray,
-#network,
-#clock,
-#backlight,
-#pulseaudio,
-#battery {
+#right,
+#custom-song {
   border-radius: 4px 14px 6px 15px;
-}
-
-.modules-left,
-.modules-right,
-.modules-center {
-}
-
-#custom-logo {
-  color: @foreground;
+  background-color: @background;
+  border: 2px solid @border-module;
+  color: @fg-module;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.9);
 }
 
 #battery icon {
@@ -175,6 +158,7 @@ window#waybar {
 }
 
 #network {
+  font-size: 16.75px;
   padding: 0px 13px 0px 8px;
 }
 
@@ -214,9 +198,9 @@ window#waybar {
 }
 
 #custom-song {
-  font-family: "NeuroPolitical";
+  font-family: "CaskaydiaMono NerdFont";
   font-style: italic;
-  font-weight: 700;
+  font-weight: 900;
   padding-right: 10px;
   color: @foreground;
 }

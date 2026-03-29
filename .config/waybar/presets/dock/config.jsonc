@@ -3,38 +3,25 @@
     //#####################
     //### CONFIGURATION ###
     //#####################
-    // "reload_style_on_change": true,
-    "margin-top": 7,
-    "margin-left": 15,
-    "margin-right": 15,
+    "reload_style_on_change": true,
+    "margin-top": 0,
+    "margin-left": 0,
+    "margin-right": 0,
     "margin-bottom": 0,
-    "layer": "top",
+    "layer": "bottom",
     "position": "top",
     "spacing": 10,
     //##################
     //### BAR ORDER  ###
     //##################
     "modules-left": [
-        "idle_inhibitor",
-        "hyprland/workspaces"
-        // "custom/storage",
-        // "cpu",
-        // "memory",
+        "group/left",
     ],
     "modules-center": [
-        // "hyprland/window",
-        // "custom/weather",
-        "custom/song",
+        "group/center",
     ],
     "modules-right": [
-        "tray",
-        // "custom/update",
-        "network",
-        // "backlight",
-        "pulseaudio",
-        "battery",
-        "clock#date",
-        "clock#time"
+        "group/right",
     ],
     //################
     //### MODULES  ###
@@ -49,31 +36,57 @@
             "2": [],
             "3": [],
             "4": [],
-            "5": [],
+            // "5": [],
             // "6": [],
             // "7": [],
             // "8": [],
-            // "9": [],
+            "9": [],
             "10": []
         },
-        "format": "<small>{icon}</small>",
         "format-icons": {
-            "1": "",
-            "2": "",
-            "3": "",
-            "4": "",
-            "5": "",
-            "6": "",
-            "7": "",
-            "8": "",
-            "9": "",
-            "10": "",
-            // "active": "<small></small>",
-            "default": "",
+            "active": "◉",
+            "default": "",
+            "empty": ""
         }
     },
     "hyprland/window": {
         "max-length": 40,
+        "tooltip": false
+    },
+    "group/left": {
+        "orientation": "inherit",
+        "modules": [
+            "idle_inhibitor",
+            "hyprland/workspaces"
+        ]
+    },
+    "group/right": {
+        "orientation": "inherit",
+        "modules": [
+            "custom/song",
+            "tray",
+            "network",
+            "pulseaudio",
+            "battery"
+        ]
+    },
+    "group/center": {
+        "orientation": "inherit",
+        "modules": [
+            "custom/date-jp",
+            "custom/time-jp"
+        ]
+    },
+    "custom/date-jp": {
+        "exec": "LANG=ja_JP.UTF-8 date '+%a %m月%d日'",
+        "interval": 3600,
+        "format": "{}",
+        "tooltip": false
+    },
+    "custom/time-jp": {
+        "exec": "LANG=ja_JP.UTF-8 date '+%I:%M %p'",
+        "interval": 1,
+        "format": "{}",
         "tooltip": false
     },
     "clock#time": {
@@ -106,7 +119,7 @@
     "network": {
         // "interface": "*",
         "format": " ",
-        "format-wifi": "{icon} ",
+        "format-wifi": "{icon}",
         "format-ethernet": " {ifname}",
         "format-linked": "󰕥 {ifname}",
         "format-disconnected": " ",
@@ -212,7 +225,7 @@
     },
     "custom/song": {
         "interval": 2,
-        "exec": "~/.local/bin/media-info",
+        "exec": "~/.local/bin/media-info max_length=24",
         "on-click": "~/.local/bin/player next_track",
         "on-click-right": "~/.local/bin/player previous_track",
         "on-click-middle": "~/.local/bin/player toggle_play",
@@ -265,8 +278,8 @@
         "tooltip-format": "Check Updates"
     },
     "tray": {
-        "icon-size": 18,
-        "spacing": 5
+        "icon-size": 19,
+        "spacing": 12
     },
     "custom/seperator": {
         "format": "|",
