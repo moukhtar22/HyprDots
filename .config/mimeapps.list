@@ -9,7 +9,7 @@ application/x-extension-xhtml=firefox.desktop;
 application/xhtml+xml=firefox.desktop;
 audio/mpeg=mpv.desktop;org.gnome.Lollypop.desktop;org.kde.kid3.desktop;audacity.desktop;
 image/bmp=org.nomacs.ImageLounge.desktop;imv.desktop;imv-dir.desktop;okularApplication_kimgio.desktop;gimp.desktop;
-image/jpeg=org.nomacs.ImageLounge.desktop;imv.desktop;imv-dir.desktop;gimp.desktop;okularApplication_kimgio.desktop;
+image/jpeg=imv.desktop;org.kde.gwenview.desktop;imv-dir.desktop;gimp.desktop;okularApplication_kimgio.desktop;firefox.desktop;org.pwmt.zathura-pdf-mupdf.desktop;
 image/png=org.kde.gwenview.desktop;org.nomacs.ImageLounge.desktop;imv.desktop;imv-dir.desktop;gimp.desktop;okularApplication_kimgio.desktop;org.pwmt.zathura-pdf-mupdf.desktop;firefox.desktop;
 image/webp=org.nomacs.ImageLounge.desktop;gimp.desktop;okularApplication_kimgio.desktop;imv.desktop;imv-dir.desktop;
 inode/directory=org.kde.dolphin.desktop;kitty-open.desktop;yazi.desktop;org.kde.kid3.desktop;
@@ -34,6 +34,7 @@ application/x-extension-xhtml=firefox.desktop
 application/xhtml+xml=firefox.desktop
 audio/mpeg=mpv.desktop;
 image/bmp=org.nomacs.ImageLounge.desktop;
+image/jpeg=imv.desktop;
 image/png=org.kde.gwenview.desktop;
 image/webp=org.nomacs.ImageLounge.desktop;
 inode/directory=org.kde.dolphin.desktop;
@@ -49,6 +50,8 @@ x-scheme-handler/http=firefox.desktop
 x-scheme-handler/https=firefox.desktop
 x-scheme-handler/jetbrains=jetbrainsd.desktop
 x-scheme-handler/postman=Postman.desktop
+x-scheme-handler/sgnl=signal.desktop
+x-scheme-handler/signalcaptcha=signal.desktop
 
 [Removed Associations]
 application/pdf=libreoffice-draw.desktop;gimp.desktop;

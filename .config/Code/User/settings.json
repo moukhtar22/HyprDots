@@ -35,7 +35,7 @@
   // Emmet for React/TS
   "emmet.includeLanguages": {
     "javascript": "javascriptreact",
-    "typescript": "typescriptreact"
+    "typescript": "typescriptreact",
   },
 
   // Terminal
@@ -87,7 +87,7 @@
     "editorBracketHighlight.foreground3": "#c172d9",
     "editorBracketHighlight.foreground4": "#4fb1bc",
     "editorBracketHighlight.foreground5": "#97c26c",
-    "editorBracketHighlight.foreground6": "#abb2c0"
+    "editorBracketHighlight.foreground6": "#abb2c0",
   },
 
   // Syntax Colors - Optimized for TS/JS/React
@@ -98,8 +98,8 @@
         "scope": ["comment", "punctuation.definition.comment"],
         "settings": {
           "foreground": "#7B7B8B",
-          "fontStyle": "italic"
-        }
+          "fontStyle": "italic",
+        },
       },
       {
         "name": "Strings",
@@ -107,11 +107,11 @@
           "string.quoted",
           "string.template",
           "string.quoted.single",
-          "string.quoted.double"
+          "string.quoted.double",
         ],
         "settings": {
-          "foreground": "#6bd178"
-        }
+          "foreground": "#6bd178",
+        },
       },
       {
         "name": "Keywords & Modifiers",
@@ -130,12 +130,12 @@
           "storage.type.interface",
           "storage.type.type",
           "storage.type.enum",
-          "storage.type.namespace"
+          "storage.type.namespace",
         ],
         "settings": {
           "foreground": "#e29766",
-          "fontStyle": "italic"
-        }
+          "fontStyle": "italic",
+        },
       },
       {
         "name": "Constants & Booleans",
@@ -145,20 +145,20 @@
           "constant.language.null",
           "constant.language.undefined",
           "variable.language.this",
-          "variable.language.super"
+          "variable.language.super",
         ],
         "settings": {
           "foreground": "#ff77cf",
-          "fontStyle": "italic"
-        }
+          "fontStyle": "italic",
+        },
       },
       {
         "name": "Numbers",
         "scope": ["constant.numeric"],
         "settings": {
           "foreground": "#ff47d1",
-          "fontStyle": "italic"
-        }
+          "fontStyle": "italic",
+        },
       },
       {
         "name": "Types & Interfaces",
@@ -168,29 +168,29 @@
           "entity.name.type.interface",
           "entity.name.type.module",
           "support.class",
-          "support.type.builtin"
+          "support.type.builtin",
         ],
         "settings": {
-          "foreground": "#00e0bef6"
-        }
+          "foreground": "#00e0bef6",
+        },
       },
       {
         "name": "Primitive Types",
         "scope": ["support.type.primitive"],
         "settings": {
-          "foreground": "#d092ff"
-        }
+          "foreground": "#d092ff",
+        },
       },
       {
         "name": "Functions & Methods",
         "scope": [
           "entity.name.function",
           "support.function",
-          "meta.function-call.generic"
+          "meta.function-call.generic",
         ],
         "settings": {
-          "foreground": "#e0c878"
-        }
+          "foreground": "#e0c878",
+        },
       },
       {
         "name": "Variables & Parameters",
@@ -201,126 +201,124 @@
           "variable.other.readwrite",
           "variable.other.constant",
           "variable.other.object",
-          "variable.other.property"
+          "variable.other.property",
         ],
         "settings": {
-          "foreground": "#ccc"
-        }
+          "foreground": "#ccc",
+        },
       },
       {
         "name": "Object Properties",
         "scope": [
           "variable.other.property",
           "support.variable.property",
-          "meta.object-literal.key"
+          "meta.object-literal.key",
         ],
         "settings": {
           "foreground": "#4dc4de",
-          "fontStyle": "italic"
-        }
+          "fontStyle": "italic",
+        },
       },
       {
         "name": "JSX/HTML Tags",
         "scope": ["entity.name.tag", "support.class.component"],
         "settings": {
-          "foreground": "#ff77cf"
-        }
+          "foreground": "#ff77cf",
+        },
       },
       {
         "name": "JSX/HTML Attributes",
         "scope": ["entity.other.attribute-name"],
         "settings": {
           "foreground": "#4dc4de",
-          "fontStyle": "italic"
-        }
+          "fontStyle": "italic",
+        },
       },
       {
         "name": "Operators",
         "scope": [
           "keyword.operator",
           "keyword.operator.logical",
-          "keyword.operator.type"
+          "keyword.operator.type",
         ],
         "settings": {
-          "foreground": "#e1e1e1"
-        }
+          "foreground": "#e1e1e1",
+        },
       },
       {
         "name": "CSS Properties",
         "scope": [
           "support.type.property-name.css",
-          "support.type.property-name.json"
+          "support.type.property-name.json",
         ],
         "settings": {
           "foreground": "#4dc4de",
-          "fontStyle": "italic"
-        }
+          "fontStyle": "italic",
+        },
       },
       {
         "name": "CSS Values & Units",
         "scope": [
           "support.constant.property-value.css",
           "keyword.other.unit.css",
-          "constant.other.color"
+          "constant.other.color",
         ],
         "settings": {
-          "foreground": "#f483cf"
-        }
+          "foreground": "#f483cf",
+        },
       },
       {
         "name": "CSS Selectors",
         "scope": [
           "entity.other.attribute-name.id.css",
-          "entity.other.attribute-name.class.css"
+          "entity.other.attribute-name.class.css",
         ],
         "settings": {
-          "foreground": "#e8a52a"
-        }
-      }
-    ]
+          "foreground": "#e8a52a",
+        },
+      },
+    ],
   },
 
   // TypeScript/JavaScript
-  "typescript.suggest.autoImports": true,
-  "typescript.updateImportsOnFileMove.enabled": "always",
-  "typescript.preferences.importModuleSpecifier": "relative",
-  "javascript.suggest.autoImports": true,
-  "javascript.updateImportsOnFileMove.enabled": "always",
+  "js/ts.suggest.autoImports": true,
+  "js/ts.updateImportsOnFileMove.enabled": "always",
+  "js/ts.preferences.importModuleSpecifier": "relative",
 
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.tabSize": 2
+    "editor.tabSize": 2,
   },
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.tabSize": 2
+    "editor.tabSize": 2,
   },
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.tabSize": 2
+    "editor.tabSize": 2,
   },
   "[javascriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.tabSize": 2
+    "editor.tabSize": 2,
   },
 
   // CSS & TailwindCSS
   "tailwindCSS.emmetCompletions": true,
   "tailwindCSS.experimental.classRegex": [
     ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
-    ["cn\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
+    ["cn\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"],
   ],
 
   "[css]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
 
   // JSON
   "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
 
   // Performance
@@ -330,18 +328,18 @@
     "**/build": true,
     "**/dist": true,
     "**/.next": true,
-    "**/.cache": true
+    "**/.cache": true,
   },
   "files.watcherExclude": {
     "**/.git/objects/**": true,
     "**/node_modules/**": true,
     "**/build/**": true,
     "**/dist/**": true,
-    "**/.next/**": true
+    "**/.next/**": true,
   },
   "files.exclude": {
     "**/node_modules": true,
-    "**/.git": false
+    "**/.git": false,
   },
 
   // File Nesting
@@ -354,26 +352,30 @@
     "*.js": "${capture}.js.map, ${capture}.min.js",
     ".env": ".env.*, .envrc",
     "tailwind.config.*": "postcss.config.*",
-    "next.config.*": "next-env.d.ts"
+    "next.config.*": "next-env.d.ts",
   },
 
   // GitHub Copilot
   "github.copilot.enable": {
     "*": false,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false,
     "typescript": true,
     "typescriptreact": true,
     "javascript": true,
-    "javascriptreact": true
+    "javascriptreact": true,
+    "prisma": true,
   },
 
   // Neovim
   "vscode-neovim.compositeKeys": {
     "''": {
-      "command": "vscode-neovim.escape"
-    }
+      "command": "vscode-neovim.escape",
+    },
   },
   "extensions.experimental.affinity": {
-    "asvetliakov.vscode-neovim": 1
+    "asvetliakov.vscode-neovim": 1,
   },
 
   // ESLint
@@ -381,9 +383,18 @@
     "javascript",
     "javascriptreact",
     "typescript",
-    "typescriptreact"
+    "typescriptreact",
   ],
 
   // Misc
-  "extensions.ignoreRecommendations": true
+  "extensions.ignoreRecommendations": true,
+  "cSpell.userWords": ["dtos", "Millis", "nodeman", "valkey"],
+  "cSpell.customDictionaries": {
+    "custom-dictionary-user": {
+      "name": "custom-dictionary-user",
+      "path": "~/.cspell/custom-dictionary-user.txt",
+      "addWords": true,
+      "scope": "user",
+    },
+  },
 }
