@@ -13,7 +13,7 @@ dotnet_v=$(dotnet --version 2>/dev/null || echo "N/A")
 node_v=$(node --version 2>/dev/null | sed 's/v//')
 
 # Build the string
-OUTPUT=$(printf "\e[0m.NET\e[0m %s / \e[33m\e[0m %s\e[0m" "$dotnet_v" "$node_v")
+OUTPUT=$(printf "\e[0m.NET\e[0m %s / \e[33m\e[0m Node %s\e[0m" "$dotnet_v" "$node_v")
 
 # 3. Save to cache and print
 echo "$OUTPUT" > "$CACHE_FILE"
