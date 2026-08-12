@@ -1,0 +1,74 @@
+#!/bin/sh
+
+CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/fastfetch"
+CACHE_FILE="$CACHE_DIR/shader-info"
+LOCK_FILE="$CACHE_DIR/shader-info.lock"
+MESA_DIR="$HOME/.cache/shader_cache/mesa_shader_cache"
+
+mkdir -p "$CACHE_DIR"
+
+calculate_sizes() {
+    if [ ! -d "$MESA_DIR" ]; then
+        echo "0B / 0B (0%)" > "$CACHE_FILE"
+        touch "$LOCK_FILE"
+        return
+    fi
+
+    # 1. Get size strings and math numbers
+    size_human=$(du -hs "$MESA_DIR" 2>/dev/null | awk '{print $1}')
+    size_kb=$(du -sk "$MESA_DIR" 2>/dev/null | awk '{print $1}')
+
+    # 2. Get max shader limits
+    max_env="${MESA_SHADER_CACHE_MAX_SIZE:-1G}"
+    max_num=$(echo "$max_env" | tr -d -c '0-9')
+    max_unit=$(echo "$max_env" | tr -d -c 'a-zA-Z' | tr '[:lower:]' '[:upper:]')
+
+    case "$max_unit" in
+        G|GB) max_kb=$((max_num * 1024 * 1024)) ;;
+        M|MB) max_kb=$((max_num * 1024)) ;;
+        K|KB) max_kb=$max_num ;;
+        *)    max_kb=$((1 * 1024 * 1024)) ; max_env="1G" ;;
+    esac
+
+    # 3. Form percentage metrics
+    if [ "$max_kb" -gt 0 ]; then
+        pct=$(( (size_kb * 100) / max_kb ))
+    else
+        pct=0
+    fi
+
+    # 4. Colorful thresholds
+    if [ "$pct" -lt 50 ]; then
+        color="\033[32m" 
+    elif [ "$pct" -lt 80 ]; then
+        color="\033[33m"
+    else
+        color="\033[31m"
+    fi
+
+    OUTPUT=$(printf "%s / %s (%b%d%%\033[0m)" "$size_human" "$max_env" "$color" "$pct")
+    echo "$OUTPUT" > "$CACHE_FILE"
+    
+    # Refresh or create the lock stamp indicating calculation finished
+    touch "$LOCK_FILE"
+}
+
+# Time definitions
+NOW=$(date +%s)
+LOCK_TIME=0
+[ -f "$LOCK_FILE" ] && LOCK_TIME=$(stat -c %Y "$LOCK_FILE")
+BOOT_TIME=$(date -d "$(uptime -s)" +%s 2>/dev/null || stat -c %Y /proc/1 2>/dev/null || echo 0)
+
+# --- REVISED FLOW LOGIC ---
+
+# Force synchronous live run if:
+# - No cache or lock files exist yet
+# - System booted up AFTER our last lock record
+# - The 15-minute window (900 seconds) has elapsed
+if [ ! -f "$CACHE_FILE" ] || [ ! -f "$LOCK_FILE" ] || [ "$BOOT_TIME" -gt "$LOCK_TIME" ] || [ "$((NOW - LOCK_TIME))" -gt 900 ]; then
+    calculate_sizes
+    cat "$CACHE_FILE"
+else
+    # Inside the 15-minute window! Print instantly (15ms prompt speeds)
+    cat "$CACHE_FILE"
+fi
