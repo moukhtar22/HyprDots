@@ -51,7 +51,7 @@ hl.window_rule({
 
 hl.window_rule({
   name = "ws-productivity",
-  match = { class = ".*(zoom|VirtualBox|Postman|dolphin|obsidian|java).*" },
+  match = { class = ".*(zoom|VirtualBox|Postman|dolphin|Obsidian|java).*" },
   workspace = 4,
 })
 
@@ -444,7 +444,7 @@ hl.window_rule({
   name = "steam-fullscreen",
   match = {
     content = 3,
-    title = "negative:.*(Launcher|Options|Setup|Working).*",
+    title = "negative:.*(Launcher|Options|Setup|Working|Organizer).*",
   },
   fullscreen = true,
 })
@@ -455,6 +455,13 @@ hl.window_rule({
   content = "none",
   fullscreen = false,
   no_focus = true,
+})
+
+hl.window_rule({
+  name = "steam-hide-blank",
+  match = { class = "steam_app.*", title = "" },
+  content = "none",
+  fullscreen = false,
 })
 
 hl.window_rule({

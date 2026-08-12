@@ -1,13 +1,13 @@
 #!/bin/bash
 set -e
 ## This script allows switching Waybar layouts and themes dynamically.
-
 ## Author: Pahasara Dewnith (https://github.com/Pahasara)
 
 PRESET_DIR="$HOME/.config/waybar/presets"
 WAYBAR_CONFIG="$HOME/.config/waybar/config.jsonc"
 WAYBAR_STYLE="$HOME/.config/waybar/style.css"
 WAYBAR_SCRIPT="$HOME/.config/waybar/waybar.sh"
+STATE_FILE="$HOME/.cache/waybar/current_preset"
 
 # Define valid presets
 VALID_PRESETS=("top" "top-modern" "top-roman" "stylish" "bottom" "float" "dock" "slant" "side")
@@ -29,6 +29,10 @@ if [[ -n "$2" ]]; then
     sed -i "s|@import url(\"themes/.*\.css\");|@import url(\"themes/$2.css\");|" "$WAYBAR_STYLE"
     echo "Theme switched to: $2"
 fi
+
+# Record state: this is now the single source of truth for "what preset is active"
+mkdir -p "$(dirname "$STATE_FILE")"
+printf '%s\n' "$1" > "$STATE_FILE"
 
 # Restart Waybar
 $WAYBAR_SCRIPT 1>/dev/null 2>/dev/null &

@@ -8,8 +8,8 @@ return { -- automated session manager
       auto_session_supress_dirs = { '~/', '~/Downloads', '~/Documents', '~/Desktop/' },
     }
 
-    vim.keymap.set('n', '<leader>ww', '<cmd>SessionRestore<CR>', { desc = 'Restore session for cwd' }) -- restore last workspace session for current directory
-    vim.keymap.set('n', '<leader>ws', '<cmd>SessionSave<CR>', { desc = 'Save session for auto session root dir' }) -- save workspace session for current working directory
+    vim.keymap.set('n', '<leader>ww', '<cmd>AutoSession restore<CR>', { desc = 'Restore session for cwd' }) -- restore last workspace session for current directory
+    vim.keymap.set('n', '<leader>ws', '<cmd>AutoSession save<CR>', { desc = 'Save session for auto session root dir' }) -- save workspace session for current working directory
   end,
 }
 

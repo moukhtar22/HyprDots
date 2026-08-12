@@ -44,11 +44,11 @@ hl.config({
 
     shadow = {
       enabled = true,
-      range = 100,
+      range = 150,
       render_power = 4,
       offset = { 0, 4 },
-      color = "rgba(1a1a1adf)",
-      color_inactive = "rgba(1a1a1a88)",
+      color = "rgba(1a1a1aff)",
+      color_inactive = "rgba(1a1a1abb)",
       scale = 0.98,
     },
 

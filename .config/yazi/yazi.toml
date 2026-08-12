@@ -136,6 +136,7 @@ preloaders = [
 	{ mime = "font/*", run = "font" },
 	{ mime = "application/ms-opentype", run = "font" },
 ]
+
 previewers = [
     # Custom MediaInfo
     { mime = "{audio,video,image}/*", run = "mediainfo"},

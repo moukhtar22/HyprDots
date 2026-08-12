@@ -1,10 +1,6 @@
 # github.com/pahasara/HyprDots
 
 # ─────────────────────────────────────────────
-# UWSM Hyprland-Specific Environment Variables
-# ─────────────────────────────────────────────
-
-# ─────────────────────────────────────────────
 # Desktop Environment
 # ─────────────────────────────────────────────
 export XDG_SESSION_TYPE=wayland

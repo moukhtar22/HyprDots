@@ -1,7 +1,7 @@
 {
   // General Settings
   "telemetry.telemetryLevel": "off",
-  "extensions.autoUpdate": false,
+  "extensions.autoUpdate": "off",
   "explorer.confirmDragAndDrop": false,
   "update.mode": "none",
 

@@ -86,7 +86,7 @@ hl.bind(mod .. " + APOSTROPHE", uwsm("discord"))
 hl.bind(mod .. " + U", uwsm("libreoffice --writer"))
 hl.bind(mod .. " + SHIFT + U", uwsm("postman"))
 hl.bind(mod .. " + Y", uwsm("okular"))
-hl.bind(mod .. " + BACKSPACE", uwsm("timecanvas"))
+hl.bind(mod .. " + BACKSPACE", toggle("timecanvas", "uwsm-app -t service -- timecanvas"))
 hl.bind(mod .. " + SHIFT + BACKSPACE", uwsm("protonplus"))
 hl.bind(mod .. " + SHIFT + SPACE", uwsm("protonvpn-app"))
 hl.bind(mod .. " + GRAVE", toggle("missioncenter", "uwsm-app -t service -- missioncenter"))
@@ -161,6 +161,14 @@ hl.bind("ALT + Print", exec(SCREENSHOT .. " save area"))
 hl.bind(mod .. " + Z", exec(BIN .. "/zen-mode"))
 hl.bind(mod .. " + SHIFT + V", exec(BIN .. "/vibrance-toggle"))
 hl.bind(mod .. " + COMMA", exec(RANDOM_WALL))
+
+-- Enable/Disable wallpaper rotation timer and notify
+hl.bind(mod .. " + SHIFT + COMMA", exec("systemctl --user enable --now wallpaper-rotate.timer && dunstify -i configure 'Wallpaper Rotator' 'Rotation Enabled'"))
+hl.bind(
+  mod .. " + SHIFT + PERIOD",
+  exec("systemctl --user disable --now wallpaper-rotate.timer && dunstify -i configure-red 'Wallpaper Roatator' 'Rotation Disabled'")
+)
+
 hl.bind(mod .. " + PERIOD", toggle("waypaper", "uwsm-app -t service -- waypaper"))
 
 -- Wallpapers by Category

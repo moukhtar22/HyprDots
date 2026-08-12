@@ -92,4 +92,13 @@ vim.api.nvim_create_autocmd('BufReadPre', {
   end,
 })
 
+vim.api.nvim_create_autocmd('FileType', {
+  desc = 'Disable Treesitter for markdown buffers',
+  group = vim.api.nvim_create_augroup('MarkdownNoTreesitter', { clear = true }),
+  pattern = { 'markdown', 'markdown.mdx' },
+  callback = function(event)
+    pcall(vim.treesitter.stop, event.buf)
+  end,
+})
+
 -- vim: ts=2 sts=2 sw=2 et
