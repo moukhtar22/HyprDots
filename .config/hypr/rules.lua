@@ -39,7 +39,13 @@ hl.window_rule({
 
 hl.window_rule({
   name = "ws-gaming-entertainment",
-  match = { class = ".*(steam|steam_app|cs2|dota2|Lutris|spotify).*" },
+  match = { class = ".*(steam_app|cs2|dota2|heroic|spotify).*" },
+  workspace = 4,
+})
+
+hl.window_rule({
+  name = "ws-steam-client",
+  match = { class = "steam", title = "Steam" },
   workspace = 4,
 })
 
@@ -78,7 +84,7 @@ hl.window_rule({
 
 hl.window_rule({
   name = "float-media-apps",
-  match = { class = ".*(zen|firefox|mpv|vlc|imv|java|discord|Lutris|Lollypop|Proton).*" },
+  match = { class = ".*(zen|firefox|mpv|vlc|imv|java|discord|Lollypop|Proton).*" },
   float = true,
 })
 
@@ -109,7 +115,7 @@ hl.window_rule({
 hl.window_rule({
   name = "center-apps",
   match = {
-    class = ".*(kitty|MissionCenter|pupgui2|Lollypop|Lutris|mpv|java|discord|imv|nomacs|easyeffects|nwg-look|qt[56]ct|zathura|gnome|kde).*",
+    class = ".*(kitty|MissionCenter|pupgui2|Lollypop|mpv|java|discord|imv|nomacs|easyeffects|nwg-look|qt[56]ct|zathura|gnome|kde).*",
   },
   center = true,
 })
@@ -192,7 +198,7 @@ hl.window_rule({
 
 hl.window_rule({
   name = "size-mid",
-  match = { class = ".*(Lutris|Lollypop|okular|MissionCenter).*" },
+  match = { class = ".*(Lollypop|okular|MissionCenter).*" },
   size = { "monitor_w*0.64", "monitor_h*0.75" },
 })
 
@@ -441,12 +447,13 @@ hl.window_rule({
 })
 
 hl.window_rule({
-  name = "steam-fullscreen",
+  name = "steam-no-fullscreen",
   match = {
     content = 3,
-    title = "negative:.*(Launcher|Options|Setup|Working|Organizer).*",
+    title = ".*(Launcher|Options|Setup|Working|Organizer|Install).*",
   },
-  fullscreen = true,
+  fullscreen = false,
+  tile = false,
 })
 
 hl.window_rule({
@@ -491,6 +498,13 @@ hl.window_rule({
 -- ──────────────────────────────────────────────────────────────
 -- JETBRAINS
 -- ──────────────────────────────────────────────────────────────
+hl.window_rule({
+  name = "jetbrains-splash",
+  match = { class = "jetbrains.*", title = "splash" },
+  float = true,
+  center = true,
+})
+
 hl.window_rule({
   name = "jetbrains-welcome",
   match = { class = "jetbrains.*", title = "Welcome.*" },
